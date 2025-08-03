@@ -12,9 +12,9 @@ More generally, as a high-level overview, the dataset was created by:
 
 1. Constructing synthetic negatives (detailed in this repo)
 2. Generating classifications, uncertainty estimates, and explanations over the label=0 and label=1 instances. See commit c0e4d6c1ad7ec9b05b89093697a5a199267c5fbd (i.e., the version 1.1.1 release) of [`mcp_utils_llm_api.py`](https://github.com/ReexpressAI/reexpress_mcp_server/blob/main/code/reexpress/mcp_utils_llm_api.py) of the Reexpress MCP Server.
-3. [Separately for the Reexpress MCP server, we use an additional model to compose the output from the LLMs from Step 2. The classifications from Step 2 and the hidden states from this additional model are then the input to an SDM estimator to determine the predictive uncertainty.]
+3. [Separately for the Reexpress MCP Server, we use an additional model to compose the output from the LLMs from Step 2. The classifications from Step 2 and the hidden states from this additional model are then the input to an SDM estimator to determine the predictive uncertainty.]
 
 > [!TIP]
-> We primarily provide this for researchers interested in generating additional synthetic negatives. Generally speaking, we recommend *not* using these prompts, model, and parameters for future generations in order to create additional variance in the distribution of negatives, so knowing these parameters can be useful toward constructing a diversity of approaches.
+> We primarily provide this for researchers interested in generating additional synthetic negatives. Generally speaking, we recommend *not* using these prompts, this model (`gpt-4.1-2025-04-14`), nor these parameters for constructing additional negative examples in order to create additional variance in the distribution of negatives. In particular, it is recommended to use an altogether different model than `gpt-4.1-2025-04-14`.
 
 [^1]: Alternatively, if you want to change the models, prompts, and/or generation parameters of the classifications (over label=0 and label=1 instances) already in the dataset, you should create four new columns for that output: modelNAME; modelNAME_verification_classification; modelNAME_confidence_in_classification; modelNAME_short_explanation_for_classification_confidence (or comparable information if you are also changing the structure of the model output itself). 
