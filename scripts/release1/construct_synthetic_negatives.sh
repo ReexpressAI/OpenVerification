@@ -82,7 +82,7 @@ python -u binary_multiple_choice__step1_prepare_data.py \
 ## As with the multiple choice datasets, construction of the examples for the FEVER data does not
 ## involve an LLM. In practice, the FEVER examples are rather simplistic and formulaic, and are of
 ## interest primarily from the perspective of an earlier era of NLP research. In practice,
-## we did not use them in version 1.1.1 of the SDM estimator in the Reexpress MCP Server.
+## we did not use them in version 1.1.1 or later of the SDM estimator in the Reexpress MCP Server.
 #########################################################################################################
 
 conda activate preprocess_env1
@@ -103,10 +103,10 @@ python -u binary_fever__step1_prepare_data.py \
 ##################### NEXT STEPS after constructing synthetic negatives: Generate verification output
 #########################################################################################################
 
-# Use the LLMs, prompts, and parameters of commit c0e4d6c1ad7ec9b05b89093697a5a199267c5fbd (i.e., the version 1.1.1 release) of [`mcp_utils_llm_api.py`](https://github.com/ReexpressAI/reexpress_mcp_server/blob/main/code/reexpress/mcp_utils_llm_api.py) of the Reexpress MCP Server. For dataset construction, we recommend using the applicable Batch Prediction APIs, which are typically signficantly less expensive than directly using the streaming APIs.
+# Use the LLMs, prompts, and parameters of [`mcp_utils_llm_api.py`](https://github.com/ReexpressAI/reexpress_mcp_server/blob/main/code/reexpress/mcp_utils_llm_api.py) of the Reexpress MCP Server. For dataset construction, we recommend using the applicable Batch Prediction APIs, which are typically signficantly less expensive than directly using the streaming APIs.
 
 #########################################################################################################
 ##################### NEXT STEPS after generating the verification output: Generate hidden states of an agreement model
 #########################################################################################################
 
-# To generate the hidden states of an agreement model, see, for example, get_model_explanations_formatted_as_binary_agreement_prompt() and get_agreement_model_embedding() as used in llm_api_controller() of commit c0e4d6c1ad7ec9b05b89093697a5a199267c5fbd (i.e., the version 1.1.1 release) of [`mcp_utils_llm_api.py`](https://github.com/ReexpressAI/reexpress_mcp_server/blob/main/code/reexpress/mcp_utils_llm_api.py) of the Reexpress MCP Server. When not all three LLMs are used, adjust the prompt as applicable.
+# To generate the hidden states of an agreement model, see, for example, get_model_explanations_formatted_as_binary_agreement_prompt() and get_agreement_model_embedding() as used in llm_api_controller() of [`mcp_utils_llm_api.py`](https://github.com/ReexpressAI/reexpress_mcp_server/blob/main/code/reexpress/mcp_utils_llm_api.py) of the Reexpress MCP Server.
